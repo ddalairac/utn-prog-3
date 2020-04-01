@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./styles.css" media="screen">
+    <title>TP1</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Info de paises">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./styles.css" media="screen">
 </head>
 <body>
 <?php 
-require_once "./required-imports.php"; 
+require_once "./view-required-imports.php"; 
 
 $cl = new CountryList();
 // print_r($cl->getAll()); 
@@ -36,7 +40,7 @@ $c = new Country($clItem);?>
         </div>
         <div class="col col-2">
             <h2>Json</h2><hr>
-            <pre><?php echo json_encode($c->getObject(), JSON_PRETTY_PRINT); ?></pre>
+            <pre><?php echo DTO::serialize($c->getObject()); ?></pre>
         </div>
     </div>
 </div>

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./styles.css" media="screen">
+    <title>TP1</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Buscar pais por nombre">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./styles.css" media="screen">
 </head>
 <body>
 <?php 
-require_once "./required-imports.php"; 
+require_once "./view-required-imports.php"; 
 $cl = new CountryList();
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">

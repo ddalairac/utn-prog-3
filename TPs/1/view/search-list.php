@@ -1,103 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>TP1</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Listas de paises filtradas">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="./styles.css" media="screen">
 </head>
 <body>
 <?php 
-require_once "./required-imports.php"; 
+require_once "./view-required-imports.php"; 
 $cl = new CountryList();
 $allCountries = $cl->getAll();
 
 // ----------------------- datos para combos ---------------------------- //
-$regions = array(); 
-$subRegions = array();  
-$languages = array();   
-$capitals = array();    
+$tables = new Tables();
+$regions = $tables->getRegions();
+$subRegions = $tables->getSubRegions(); 
+$languages = $tables->getLanguages();  
+$capitals = $tables->getCapitals();   
 
-foreach ($allCountries as $c) {
-    // Continentes
-    $has = false;
-    foreach ($regions as $r) { if($r == $c->region){  $has = true; } }
-    if($has == false && $c->region){ $regions[] = $c->region; }
-
-    // Sub Regiones
-    $has = false;
-    foreach ($subRegions as $sr) { if($sr == $c->subregion){  $has = true; } }
-    if($has == false && $c->subregion){ $subRegions[] = $c->subregion; }
-
-    // Idiomas
-    $has = false;
-    foreach ($c->languages as $cLan) {
-        foreach ($languages as $l) { 
-            if($l == $cLan->name){  $has = true; } 
-        }
-        if($has == false && $cLan->name){ $languages[] = $cLan->name;} 
-    }
-
-    // Capitales
-    $has = false;
-    foreach ($capitals as $r) { if($r == $c->capital){  $has = true; } }
-    if($has == false && $c->capital){ $capitals[] = $c->capital; }
-}
 
 // ----------------------- funciones ---------------------------- //
 function submit(){
     document.getElementById("my-form").submit();
 }
-function printRegiones($region){
-    $cl = new CountryList();
-    $allCountries = $cl->getAll();
+function printCountryRegiones($list){
     $message = "<ul>";
-    foreach ($allCountries as $c) {
-        if($c->region == $region){
-            $message .= "<li>".$c->name."</li>";
-        }
+    foreach ($list as $item) {
+            $message .= "<li>".$item->name."</li>";
     }
     $message .= "</ul>";
     return $message;
 }
 
-function printSubRegiones($subregion){
-    $cl = new CountryList();
-    $allCountries = $cl->getAll();
-    $message = "<ul>";
-    foreach ($allCountries as $c) {
-        if($c->subregion == $subregion){
-            $message .= "<li>".$c->name."</li>";
-        }
-    }
-    $message .= "</ul>";
-    return $message;
-}
-
-function printLanguages($language){
-    $cl = new CountryList();
-    $allCountries = $cl->getAll();
-    $message = "<ul>";
-    foreach ($allCountries as $c) {
-        foreach ($c->languages as $cLan) {
-            if($cLan->name == $language){
-                $message .= "<li>".$c->name."</li>";
-            }
-        }
-    }
-    $message .= "</ul>";
-    return $message;
-}
-
-function printCapitals($capital){
-    $cl = new CountryList();
-    $allCountries = $cl->getAll();
-    $message = "<ul>";
-    foreach ($allCountries as $c) {
-        if($c->capital == $capital){
-            $message .= "<li>".$c->name."</li>";
-        }
-    }
-    $message .= "</ul>";
-    return $message;
-}
 ?>
 
 
@@ -105,8 +41,6 @@ function printCapitals($capital){
     <a href="./../" class="volver">< vovler</a>
     <div class="row">
         <div class="col col-2">
-
-
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" name="myform">
                 <h2>Seleccionar</h2>
                 <label>Por continente: </label>
@@ -147,8 +81,6 @@ function printCapitals($capital){
             </form>
         </div>  
         <div class="col col-2">
-
-
             <?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $selectRegion = $_POST['region'];
                 $selectSubregion = $_POST['subregion'];
@@ -156,33 +88,28 @@ function printCapitals($capital){
                 $selectCapital = $_POST['capital'];
                 if (!empty($selectRegion)) {
                     echo "<h2>Busqueda por continente: </h2> <h3>$selectRegion </h3>";
-                    echo printRegiones($selectRegion);
+                    $items = $cl->getbyRegion($selectRegion);
+                    echo printCountryRegiones($items);
                 } else if (!empty($selectSubregion)) {
                     echo "<h2>Busqueda por sub region: </h2> <h3>$selectSubregion </h3>";
-                    echo printSubRegiones($selectSubregion);
+                    $items = $cl->getbySubRegion($selectSubregion);
+                    echo printCountryRegiones($items);
                 } else if (!empty($selectLanguage)) {
                     echo "<h2>Busqueda por idioma: </h2> <h3>$selectLanguage </h3>";
-                    echo printLanguages($selectLanguage);
+                    $items = $cl->getbyLanguages($selectLanguage);
+                    echo printCountryRegiones($items);
                 } else if (!empty($selectCapital)) {
                     echo "<h2>Busqueda por capital: </h2> <h3>$selectCapital </h3>";
-                    echo printCapitals($selectCapital);
-                    // print_r($pais);
+                    $items = $cl->getbyCapital($selectCapital);
+                    echo printCountryRegiones($items);
                 } else {
                     echo "No hay resultados";
                 }
             }  ?>
-
-
-
         </div>  
     </div><!-- row -->
-            
-
-
 </div><!-- container -->
 
-
-<pre> <?php //print_r($allCountries); ?></pre>
 
 </body>
 </html>

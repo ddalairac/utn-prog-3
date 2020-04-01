@@ -48,8 +48,9 @@
     <div class="row">
         <div class="col col-2">
             <h2>Templates</h2>
+            <a href="./view/search.php">Buscar pais por nombre</a>
+            <a href="./view/search-list.php">Buscar grupo de paises</a>
             <a href="./view/print-country.php">Metodos estaticos y de intancia</a>
-            <a href="./view/search.php">Buscar paises</a>
         </div>
         <div class="col col-2">
             <h2>Api</h2>

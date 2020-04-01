@@ -16,6 +16,7 @@ class CountryList implements ICountryList{
     public function getbyName($name){
         return $this->restCountries->byName($name);
     }
+
 }
 
 

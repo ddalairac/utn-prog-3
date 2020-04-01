@@ -10,11 +10,11 @@ $cl = new CountryList();
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
     <div class="container">
-        <a href="./../">< vovler</a>
+        <a href="./../" class="volver">< vovler</a>
         <div class="row">
             <div class="col col-2">
                 <h2>Seleccionar</h2>
-                <label>Elegir un pais: </label><br>
+                <label>Elegir un pais: </label>
                 <select id="list" name="listCountry"><?php 
                 echo "<option value='' >none</option>";
                 foreach ($cl->getAll() as $value) {
@@ -24,7 +24,7 @@ $cl = new CountryList();
             </div>  
             <div class="col col-2">
                 <h2>Buscar</h2>
-                <label>Buscar por nombre: </label><br>
+                <label>Buscar por nombre: </label>
                 <input type="text" name="searchCountry">
             </div>  
         </div><!-- row -->

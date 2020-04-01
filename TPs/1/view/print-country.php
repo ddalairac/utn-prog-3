@@ -13,7 +13,7 @@ $cl = new CountryList();
 $clItem = $cl->getbyName("Argentina");
 $c = new Country($clItem);?>
 <div class="container">
-    <a href="./../">< vovler</a>
+    <a href="./../" class="volver">< vovler</a>
     <h1>Metodos</h1>
     <div class="row">
         <div class="col col-2">

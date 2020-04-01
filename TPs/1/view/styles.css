@@ -37,6 +37,10 @@ h1{
 h2{
     font-size: 20px;
 }
+h3{
+    margin-top:0;
+    color: grey; 
+}
 p{
     color: grey;    
 }
@@ -44,6 +48,18 @@ a {
     margin: 15px 0 ;
     padding: 0;
     display: block;
+    text-decoration: none;
+}
+a.volver{
+    font-size: 20px;
+    text-transform: uppercase;
+    color: cadetblue;
+}
+label {
+    margin: 8px 0 5px 0;
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
 }
 hr {
     border-top-color: blue;
@@ -62,7 +78,7 @@ button{
 button:hover{
     opacity: .6;
 }
-select#list,
+select,
 input[type="text"] {
     width: -webkit-fill-available;
     border-radius: 3px;

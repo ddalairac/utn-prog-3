@@ -2,8 +2,9 @@
 class File {
 
     public function __constructor(){}
-    private static $filerute = './files/file.txt';
-    private function toJson($data){
+    private static $filerute = './files/';
+    private static $filename= 'file.txt';
+    private function toDTO($data){
         return json_encode($data, JSON_PRETTY_PRINT);
     }
     private function txtToObj($str){
@@ -14,11 +15,10 @@ class File {
 
         return $personaObj;
     }
-
     public function readAll(){
         $result = [];
         try {
-            $archivo = fopen(self::$filerute,'r');
+            $archivo = fopen(self::$filerute.self::$filename,'r');
             // $result = fread($archivo,filesize(self::$filerute)); // lee todo el archivo hasta el limite de bytes
             while(!feof($archivo)){ // itera hasta que termina el archivo
                 $row = fgets($archivo); // lee una linea
@@ -27,19 +27,18 @@ class File {
             $archivo = fclose($archivo);
         } catch (\Throwable $th) {
             $result = $th;
-            // $result = "Error";
         }
-        return $this->toJson($result);
+        return $this->toDTO($result);
     }
     public function readByID($requestId){
-        $result = new stdClass();
+        $result = "";
         try {
-            $archivo = fopen(self::$filerute,'r');
+            $archivo = fopen(self::$filerute.self::$filename,'r');
             while(!feof($archivo)){ // itera hasta que termina el archivo
                 $row = fgets($archivo); // lee una linea
                 $persona = $this->txtToObj($row);
 
-                if($persona->id = $requestId){
+                if($persona->id == $requestId){
                     $persona->requestId =$requestId;
                     $result = $persona;
                     break;
@@ -48,36 +47,52 @@ class File {
             $archivo = fclose($archivo);
         } catch (\Throwable $th) {
             $result = $th;
-            // $result = "Error";
         }
-        return $this->toJson($result);
+        return $this->toDTO($result);
     }
     public function write($data){
         try {
-            $archivo = fopen(self::$filerute,'a+');
+            $archivo = fopen(self::$filerute.self::$filename,'a+');
             fwrite($archivo, $data); // va a depender de como abrimos el archivo
             $archivo = fclose($archivo);
         } catch (\Throwable $th) {
             $result = $th;
-            // $result = "Error";
         }
+    }
+    public function delete($deleteId){
+        // $result = "";
+        // try {
+        //     $archivo = fopen(self::$filerute.self::$filename,'r');
+        //     while(!feof($archivo)){ // itera hasta que termina el archivo
+        //         $row = fgets($archivo); // lee una linea
+        //         $persona = $this->txtToObj($row);
+
+        //         if($persona->id == $requestId){
+        //             $persona->requestId =$requestId;
+        //             $result = $persona;
+        //             break;
+        //         }
+        //     }
+        //     $archivo = fclose($archivo);
+        // } catch (\Throwable $th) {
+        //     $result = $th;
+        // }
+        // return $this->toDTO($result);
     }
     public function overWrite($data){
         try {
-            $archivo = fopen(self::$filerute,'w');
+            $archivo = fopen(self::$filerute.self::$filename,'w');
             fwrite($archivo, $data); // va a depender de como abrimos el archivo
             $archivo = fclose($archivo);
         } catch (\Throwable $th) {
             $result = $th;
-            // $result = "Error";
         }
     }
     public function backup(){
         try {
-            copy(self::$filerute,'file2.txt');
+            copy(self::$filerute.self::$filename,self::$filerute.'file2.txt');
         } catch (\Throwable $th) {
             $result = $th;
-            // $result = "Error";
         }
     }
 }

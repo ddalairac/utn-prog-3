@@ -18,10 +18,10 @@ switch ($path) {
     case '/persona':
         switch ($metodo){
             case 'GET':
-                if(Count($_GET) == 0){
+                if(Count($_GET) == 0){ // Get Lista ---------------------------------------------------------------------------------
                     echo Response::data2DTO("Success",$persona->getAll() ); 
-                } else if(isset($_GET['id'])){
-                    echo Response::data2DTO("Success",$persona->getByID($_GET['id']) );
+                } else if(isset($_GET['id'])){ // Get Item --------------------------------------------------------------------------
+                    echo Response::data2DTO("Success",$persona->getByID($_GET['id']) ); 
                 } else {
                     echo Response::data2DTO("Error","Metodo no encontrado.");
                 }
@@ -30,18 +30,28 @@ switch ($path) {
             case 'POST':
                 if(Count($_POST) == 0){
                     echo Response::data2DTO("Error","No se recibieron parametros");
-                } else if(isset($_POST['id']) && isset($_POST['name']) ){
-                    $data = $persona->edit($_POST['id'],$_POST['name']);
-                    if(!$data){
-                        echo Response::data2DTO("Fail","No se encontro el ID");
+                } else if(isset($_POST['id']) && isset($_POST['name']) && isset($_FILES['image'])){ // Editar -----------------------
+                    $isValidImg = FileImg::isValidImg($_FILES['image']);
+                    if (!$isValidImg->valid) {
+                        echo Response::data2DTO("Fail",$isValidImg->message);
                     } else {
-                        echo Response::data2DTO("Success",$data);
+                        $data = $persona->edit($_POST['id'],$_POST['name'], new FileImg($_FILES['image']));
+                        if(!$data){
+                            echo Response::data2DTO("Fail","No se encontro el ID");
+                        } else {
+                            echo Response::data2DTO("Success",$data);
+                        }
                     }
 
-                } else if( isset($_POST['name']) ){
-                    echo Response::data2DTO("Success",$persona->add($_POST['name']));
+                } else if( isset($_POST['name']) && isset($_FILES['image']) ){ // Add -----------------------------------------------
+                    $isValidImg = FileImg::isValidImg($_FILES['image']);
+                    if (!$isValidImg->valid) {
+                        echo Response::data2DTO("Fail",$isValidImg->message);
+                    } else {
+                        echo Response::data2DTO("Success",$persona->add($_POST['name'], new FileImg($_FILES['image'])));
+                    } 
                 
-                } else if( isset($_POST['id']) ){
+                } else if( isset($_POST['id']) ){ // Borrar -------------------------------------------------------------------------
                     $data = $persona->removeByID($_POST['id']);
                     if(!$data){
                         echo Response::data2DTO("Fail","No se encontro el ID");

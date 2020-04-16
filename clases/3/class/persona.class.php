@@ -18,12 +18,14 @@ class Persona {
     public function getAll(){
         return $this->file->file2Obj();
     }
-    public function edit($id,$name){
+    public function edit($id,$name,$img){
         $list = $this->getAll();
         $editItem = null;
         foreach ($list as $itm) {
             if($itm->id == $id){
+                FileImg::removeImg($itm->img);
                 $itm->name = $name;
+                $itm->img = $img;
                 $editItem = $itm;
             }
         }
@@ -36,7 +38,7 @@ class Persona {
         }
     }
     
-    public function add($name){
+    public function add($name,$img){
         $list = $this->file->file2Obj();
         $max = 1;
         for ($i=0; $i < Count($list); $i++) { 
@@ -48,6 +50,7 @@ class Persona {
         $newItem = new StdClass();
         $newItem->id = $max + 1;
         $newItem->name = $name;
+        $newItem->img = $img;
         array_push($list, $newItem);
         $this->file->obj2File($list);
         return $list;

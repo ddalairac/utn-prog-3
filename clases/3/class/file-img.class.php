@@ -1,7 +1,8 @@
 <?php
 class FileImg {
 
-    private static $filerute = './files/img/';
+    private static $imgRute = './files/img/';
+    private static $imgBackupRute = './files/img_backup/';
     
     public $moveOk;
     public $name;
@@ -14,9 +15,27 @@ class FileImg {
         $this->name =  $nameParts[0] . '-' . time() . "." . $nameParts[Count($nameParts) - 1 ];
         $this->type = $_file['type'];
         $this->size = $_file['size'];
-        $this->moveOk = move_uploaded_file($tmp_name, self::$filerute . $this->name);
+        $this->moveOk = move_uploaded_file($tmp_name, self::$imgRute . $this->name);
 
-        echo json_encode($this);
+        // echo json_encode($this);
+    }
+    public static function removeImg($img){
+        if(copy(self::$imgRute . $img->name, self::$imgBackupRute . $img->name)){
+            unlink(self::$imgRute . $img->name);
+        }
+    }
+    public static function isValidImg($img){
+        $response = new StdClass();
+        if ($img['size'] > 100000) {
+            $response->valid = false;
+            $response->message = "La imagen es muy grande";
+        } else if ($img['type'] != "image/png"){
+            $response->valid = false;
+            $response->message = "La extension no es correcta";
+        } else {
+            $response->valid = true;
+        }
+        return $response;
     }
 
 }

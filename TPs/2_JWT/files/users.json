@@ -1,0 +1,26 @@
+[
+    {
+        "mail": "dalairac@gmail.com",
+        "pass": "1234",
+        "name": "Diego",
+        "lastname": "Dalairac",
+        "phone": "1167-1234",
+        "type": "admin"
+    },
+    {
+        "mail": "diego@gmail.com",
+        "pass": "1234",
+        "name": "Diego",
+        "lastname": "Dalairac",
+        "phone": "1167-1234",
+        "type": "user"
+    },
+    {
+        "mail": "anibal@gmail.com",
+        "pass": "1234",
+        "name": "Anibal",
+        "lastname": "Dalairac",
+        "phone": "1167-1234",
+        "type": "user"
+    }
+]

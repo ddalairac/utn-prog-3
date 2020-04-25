@@ -46,7 +46,7 @@ class File {
             }
             $archivo = fclose($archivo);
         } catch (\Throwable $th) {
-            $result = $th;
+            $result = $th->getMessage();
         }
         return $this->toDTO($result);
     }

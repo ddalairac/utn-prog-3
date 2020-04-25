@@ -1,0 +1,15 @@
+{
+    "name": "ddalairac/tp2",
+    "description": "Api con jwt login",
+    "type": "project",
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Dalairac Diego",
+            "email": "mail@gmail.com"
+        }
+    ]
+}

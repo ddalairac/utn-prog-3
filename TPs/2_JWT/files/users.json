@@ -22,5 +22,13 @@
         "lastname": "Dalairac",
         "phone": "1167-1234",
         "type": "user"
+    },
+    {
+        "mail": "hugo@gmail.com",
+        "pass": "1234",
+        "name": "Hugo",
+        "lastname": "Dalairac",
+        "phone": "1167-1234",
+        "type": "admin"
     }
 ]

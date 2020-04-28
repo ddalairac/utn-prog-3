@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Diego",
+        "pass": "1234",
+        "dni": "29747505",
+        "medcoverage": "OsdePym",
+        "type": "admin"
+    },
+    {
+        "id": 2,
+        "name": "Julia",
+        "pass": "1234",
+        "dni": "31224305",
+        "medcoverage": "ACE",
+        "type": "user"
+    },
+    {
+        "id": 3,
+        "name": "Diego2",
+        "pass": "1234",
+        "dni": "29747505",
+        "medcoverage": "OsdePym",
+        "type": "admin"
+    }
+]

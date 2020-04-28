@@ -1,0 +1,130 @@
+<?php 
+/* 
+* (POST) stock: (Solo para admin). Recibe producto (vacuna o medicamento), marca, precio, stock y foto y
+  lo guarda en un archivo en formato JSON, a la imagen la guarda en la carpeta imágenes . Generar un
+  identificador (id) único para cada producto
+* (GET) stock: Muestra la lista de productos.
+* (POST) Ventas: (Solo usuarios) Recibe id y cantidad de producto y usuario y si existe esa cantidad de
+  producto devuelve el monto total de la operación. Si se realiza la venta restar el stock al producto y
+  guardar la venta serializado en el archivo ventas.xxx .
+
+* (GET) ventas: Si es admin muestra listado con todas las ventas, si es usuario solo las ventas de dichousuario
+* Generar una marca de agua al subir la foto. */
+class Products {
+    
+
+    private function getId($list){
+        $max=0;
+        foreach($list as $user){
+            if($max < $user->id){
+                $max = $user->id;
+            }
+        }
+        return $max + 1;
+    }
+    public function setProduct($producto, $marca, $precio, $stock, $foto){
+        try {
+            FileData::$filename = 'stock.json';
+            $list = FileData::file2Obj();
+            if($list == null){$list = [];}
+        } catch (\Throwable $th) {
+            return 500;
+        }
+        $product = new StdClass();
+        $product->id = self::getId($list);
+        $product->producto = $producto;
+        $product->marca = $marca;
+        $product->precio = $precio;
+        $product->stock = $stock;
+        $product->foto = $foto;
+        array_push($list,$product);
+        try {
+            FileData::$filename = 'stock.json';
+            FileData::obj2File($list);
+            return $product;
+        } catch (\Throwable $th) {
+            return 500;
+        }
+    }
+    
+    private function findProductByID($id,$list){
+        if($list == null){
+            return null;
+        }
+        foreach($list as $prod){
+            if($id == $prod->id){
+                return $prod;
+            }
+        }
+        return null;
+    }
+    public function setSale($id, $cantidad){
+        try {
+            FileData::$filename = 'stock.json';
+            $listProd = FileData::file2Obj();
+            if($listProd == null){$listProd = [];}
+        } catch (\Throwable $th) {
+            return 500;
+        }
+        $product = self::findProductByID($id,$listProd);
+        if($product == null){
+            return 404;
+        }
+        if($product->stock < $cantidad){
+            return 409;
+        }
+        $product->stock = $product->stock - $cantidad;
+        try {
+            FileData::obj2File($listProd);
+        } catch (\Throwable $th) {
+            return 500;
+        }
+        /// registrar venta
+        
+        $sale = new StdClass();
+        $sale->total = $cantidad * $product->precio;
+        $sale->cantidad = $cantidad;
+        $sale->product_id = $product->id;
+        $sale->product_price = $product->precio;
+        
+        try {
+            FileData::$filename = 'sales.json';
+            $listSale = FileData::file2Obj();
+            if($listSale == null){$listSale = [];}
+        } catch (\Throwable $th) {
+            return 500;
+        }
+        array_push($listSale,$sale);
+        $res = new StdClass();
+        $res->total = $sale->total;
+        try {
+            FileData::$filename = 'sales.json';
+            FileData::obj2File($listSale);
+            return $res;
+        } catch (\Throwable $th) {
+            return 500;
+        }
+    }
+    public function getProducts(){
+        try {
+            FileData::$filename = 'stock.json';
+            $list = (array)FileData::file2Obj();
+            if($list == null){$list = [];}
+            return $list;
+        } catch (\Throwable $th) {
+            return 500;
+        }
+    }
+    public function getSales(){
+        try {
+            FileData::$filename = 'sales.json';
+            $list = (array)FileData::file2Obj();
+            if($list == null){$list = [];}
+            return $list;
+        } catch (\Throwable $th) {
+            return 500;
+        }
+    }
+
+}
+?>

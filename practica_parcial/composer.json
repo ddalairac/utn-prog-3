@@ -1,0 +1,17 @@
+{
+    "name": "ddalairac/practica_parcial",
+    "description": "parcial de prueba",
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    },
+    "require-dev": {
+        "firebase/php-jwt": "^5.2"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Diego Dalairac",
+            "email": "d@d.com"
+        }
+    ]
+}

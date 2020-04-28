@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "producto": "vacuna",
+        "marca": "umbrella",
+        "precio": "3000",
+        "stock": 1,
+        "foto": {
+            "moveOk": true,
+            "name": "covid-1588033250.jpeg",
+            "type": "image\/jpeg",
+            "size": 20976
+        }
+    },
+    {
+        "id": 2,
+        "producto": "medicamento",
+        "marca": "umbrella",
+        "precio": "3000",
+        "stock": 14,
+        "foto": {
+            "moveOk": true,
+            "name": "Raniditidina-1588033531.jpg",
+            "type": "image\/jpeg",
+            "size": 19860
+        }
+    }
+]

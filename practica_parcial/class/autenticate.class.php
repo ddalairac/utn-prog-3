@@ -6,15 +6,15 @@ use \Firebase\JWT\JWT;
 class Autenticate {
     public function __construct(){}
     private static $key = "example_key";
+    private static $userFile = 'users.json';
 
-    public function login($name,$pass){
+    public function login($user,$pass){
         try {
-            FileData::$filename = 'users.json';
-            $list = FileData::file2Obj();
+            $list = FileData::file2Obj(self::$userFile);
             if($list == null){$list = [];}
             foreach ($list as $us) {
-                if($name == $us->name && $pass == $us->pass){
-                    return self::jwtCreate($name,$us->type);
+                if($user == $us->user && $pass == $us->pass){
+                    return self::jwtCreate($user,$us->type);
                 }
             }
             return 401;
@@ -23,35 +23,35 @@ class Autenticate {
         }
     }
 
-    public function signin($name,$pass,$dni,$medcoverage,$type){
+    public function signin($user,$pass,$dni,$medcoverage,$type){
         
-        FileData::$filename = 'users.json';
         try {
-            $list = FileData::file2Obj();
-            if($list == null){$list = [];}
-            foreach ($list as $us) {
-                max(-10, FALSE);
-                if($name == $us->name){
-                    return 409;
-                }
+            $list = FileData::file2Obj(self::$userFile);
+            if($list == null){
+                $list = [];
             }
         } catch (\Throwable $th) {
             return 500;
         }
-        $user = new StdClass();
-        $user->id = self::getId($list);
-        $user->name = $name;
-        $user->pass = $pass;
-        $user->dni = $dni;
-        $user->medcoverage = $medcoverage;
-        $user->type = $type;
-        array_push($list,$user);
+
+        if(!self::validateUserName($list,$user)){
+            return 409;
+        }
+        
+        $newUser = new StdClass();
+        $newUser->id = self::setId($list);
+        $newUser->user = $user;
+        $newUser->pass = $pass;
+        $newUser->dni = $dni;
+        $newUser->medcoverage = $medcoverage;
+        $newUser->type = $type;
+        array_push($list,$newUser);
         try {
-            FileData::obj2File($list);
+            FileData::obj2File($list,self::$userFile);
         } catch (\Throwable $th) {
             return 500;
         }
-        return self::jwtCreate($name,$type);
+        return self::jwtCreate($user,$type);
     }
 
     private function jwtCreate($user,$type){
@@ -67,9 +67,9 @@ class Autenticate {
 
     public function jwtDecode($jwt){
         return $decoded = JWT::decode($jwt, self::$key, array('HS256'));
-        // return (array) $decoded;
     }
-    private function getId($list){
+
+    private function setId($list){
         $max=0;
         foreach($list as $user){
             if($max < $user->id){
@@ -77,6 +77,15 @@ class Autenticate {
             }
         }
         return $max + 1;
+    }
+    
+    private function validateUserName($list,$user){
+        foreach ($list as $us) {
+            if($user == $us->user){
+                return false;
+            }
+        }
+        return true;
     }
 }
 

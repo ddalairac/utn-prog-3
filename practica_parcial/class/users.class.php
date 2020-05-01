@@ -21,8 +21,7 @@ class Users {
     }
     public function getAll(){
         try {
-            FileData::$filename = 'users.json';
-            return (array)FileData::file2Obj();
+            return (array)FileData::file2Obj('users.json');
         } catch (\Throwable $th) {
             return 500;
         }

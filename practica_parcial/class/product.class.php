@@ -24,8 +24,7 @@ class Products {
     }
     public function setProduct($producto, $marca, $precio, $stock, $foto){
         try {
-            FileData::$filename = 'stock.json';
-            $list = FileData::file2Obj();
+            $list = FileData::file2Obj('stock.json');
             if($list == null){$list = [];}
         } catch (\Throwable $th) {
             return 500;
@@ -39,8 +38,7 @@ class Products {
         $product->foto = $foto;
         array_push($list,$product);
         try {
-            FileData::$filename = 'stock.json';
-            FileData::obj2File($list);
+            FileData::obj2File($list,'stock.json');
             return $product;
         } catch (\Throwable $th) {
             return 500;
@@ -58,10 +56,10 @@ class Products {
         }
         return null;
     }
+    
     public function setSale($id, $cantidad){
         try {
-            FileData::$filename = 'stock.json';
-            $listProd = FileData::file2Obj();
+            $listProd = FileData::file2Obj('stock.json');
             if($listProd == null){$listProd = [];}
         } catch (\Throwable $th) {
             return 500;
@@ -75,12 +73,12 @@ class Products {
         }
         $product->stock = $product->stock - $cantidad;
         try {
-            FileData::obj2File($listProd);
+            FileData::obj2File($listProd,'stock.json');
         } catch (\Throwable $th) {
             return 500;
         }
+
         /// registrar venta
-        
         $sale = new StdClass();
         $sale->total = $cantidad * $product->precio;
         $sale->cantidad = $cantidad;
@@ -88,8 +86,7 @@ class Products {
         $sale->product_price = $product->precio;
         
         try {
-            FileData::$filename = 'sales.json';
-            $listSale = FileData::file2Obj();
+            $listSale = FileData::file2Obj('sales.json');
             if($listSale == null){$listSale = [];}
         } catch (\Throwable $th) {
             return 500;
@@ -98,8 +95,7 @@ class Products {
         $res = new StdClass();
         $res->total = $sale->total;
         try {
-            FileData::$filename = 'sales.json';
-            FileData::obj2File($listSale);
+            FileData::obj2File($listSale,'sales.json');
             return $res;
         } catch (\Throwable $th) {
             return 500;
@@ -107,8 +103,7 @@ class Products {
     }
     public function getProducts(){
         try {
-            FileData::$filename = 'stock.json';
-            $list = (array)FileData::file2Obj();
+            $list = (array)FileData::file2Obj('stock.json');
             if($list == null){$list = [];}
             return $list;
         } catch (\Throwable $th) {
@@ -117,8 +112,7 @@ class Products {
     }
     public function getSales(){
         try {
-            FileData::$filename = 'sales.json';
-            $list = (array)FileData::file2Obj();
+            $list = (array)FileData::file2Obj('sales.json');
             if($list == null){$list = [];}
             return $list;
         } catch (\Throwable $th) {

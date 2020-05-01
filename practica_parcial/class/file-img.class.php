@@ -16,14 +16,14 @@ class FileImg {
         $this->type = $_file['type'];
         $this->size = $_file['size'];
         $this->moveOk = move_uploaded_file($tmp_name, self::$imgRute . $this->name);
-
-        // echo json_encode($this);
     }
+
     public static function removeImg($img){
         if(copy(self::$imgRute . $img->name, self::$imgBackupRute . $img->name)){
             unlink(self::$imgRute . $img->name);
         }
     }
+    
     public static function isValidImg($img){
         $response = new StdClass();
         echo "img type".$img['type'];

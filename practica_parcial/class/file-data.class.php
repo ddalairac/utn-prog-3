@@ -2,22 +2,21 @@
 class FileData {
 
     private static $filerute = './files/';
-    public static $filename = 'users.json';
 
     public function __construct(){
     }
 
-    public function file2Obj(){
-        $jsonData = self::file2Json();
+    public function file2Obj($filename){
+        $jsonData = self::file2Json($filename);
         $obj = json_decode($jsonData); 
         return $obj; 
     }
     
-    public function file2Json(){
-        $url = self::$filerute.self::$filename;
+    public function file2Json($filename){
+        $url = self::$filerute.$filename;
         $file = fopen($url, "r");
-        if(filesize(self::$filerute.self::$filename) > 0){
-            $jsonData = fread($file, filesize(self::$filerute.self::$filename));
+        if(filesize(self::$filerute.$filename) > 0){
+            $jsonData = fread($file, filesize(self::$filerute.$filename));
         } else {
             $jsonData = null;
         }
@@ -25,14 +24,14 @@ class FileData {
         return $jsonData; 
     }
     
-    public function obj2File($data){
+    public function obj2File($data,$filename){
         $json = json_encode($data, JSON_PRETTY_PRINT);
-        $url = self::$filerute.self::$filename;
+        $url = self::$filerute.$filename;
         $file = fopen($url, "w");
         fwrite($file, $json);
-       
         $r = fclose($file);
         return $r;
     }
+    
 }
 ?>

@@ -65,7 +65,7 @@ switch ($metodo) {
                                 if(!is_int($res)){
                                     echo Response::data2DTO("Success",201,$res);
                                 } else {
-                                    echo Response::data2DTO("Error",$res, "No se pudo crear el usuario por un error interno.");
+                                    echo Response::data2DTO("Error",$res, "No se pudo cargar el producto por un error interno.");
                                 }
                             // } else {
                             //     echo Response::data2DTO("Fail",409,$isValidImg->message);
@@ -96,21 +96,21 @@ switch ($metodo) {
                                         $message = "No hay stock suficiente para la venta.";
                                         break;
                                     default:
-                                        echo Response::data2DTO("Error",$res, "No se pudo realizar la venta.");
+                                        $message = "No se pudo realizar la venta.";
                                         break;
                                 }
+                                echo Response::data2DTO("Error",$res, $message);
                             }
                     } else {
                         echo Response::data2DTO("Error",400, "Datos en solicitud incorrectos.");
                     }
                 } else {
-                    echo Response::data2DTO("Error",403, "Solo los usuarios puede realizar ventas.");
+                    echo Response::data2DTO("Error",403, "Los administradores no pueden realizar ventas.");
                 }
                 break;
             default:
                 echo Response::data2DTO("Error",400, "Solicitud incorrecta.");
                 break;
-            
         }
         break;
 

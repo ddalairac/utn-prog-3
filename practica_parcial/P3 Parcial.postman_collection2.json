@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "bfdbbbe4-d878-4be8-b2cb-13bdd685e2c5",
+		"name": "P3 Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Diego",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "dni",
+							"value": "29747505",
+							"type": "text"
+						},
+						{
+							"key": "obra_social",
+							"value": "OsdePym",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/practica_parcial/index.php/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"practica_parcial",
+						"index.php",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/practica_parcial/index.php/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"practica_parcial",
+						"index.php",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODgwMzI0NjEsImV4cCI6MTU4ODAzNDI2MSwic3ViIjoiRGllZ28iLCJ0eXAiOiJhZG1pbiJ9.xM5LlCb1JtVxc1InGU7TgAGaqSpwCq0HtMNeZiB7Y2w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "producto",
+							"value": "medicamento",
+							"type": "text"
+						},
+						{
+							"key": "marca",
+							"value": "umbrella",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "3000",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": "/C:/Users/a308640/Desktop/Raniditidina.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/practica_parcial/index.php/stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"practica_parcial",
+						"index.php",
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stock",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODgwMzM3NzAsImV4cCI6MTU4ODAzNTU3MCwic3ViIjoiRGllZ28iLCJ0eXAiOiJhZG1pbiJ9.J7V3mGSJJ5tJbiafkpOXFcN2yNE3JGYbGDbXw8MZoyE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/practica_parcial/index.php/stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"practica_parcial",
+						"index.php",
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODgwMzY4OTcsImV4cCI6MTU4ODAzODY5Nywic3ViIjoiSnVsaWEiLCJ0eXAiOiJ1c2VyIn0.l0x90UO9T6EkIoW4AMo2ddXWLGUGNT_yDXkMY1GYnys",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_producto",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "cantidad",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "ususario",
+							"value": "?",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/practica_parcial/index.php/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"practica_parcial",
+						"index.php",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODgwMzQxMjQsImV4cCI6MTU4ODAzNTkyNCwic3ViIjoiRGllZ28iLCJ0eXAiOiJhZG1pbiJ9.vc26HauF71OWjNhlPkzKOkbB0I2RB3yt5i-4FqI5kFo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/practica_parcial/index.php/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"practica_parcial",
+						"index.php",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

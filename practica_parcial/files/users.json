@@ -1,25 +1,25 @@
 [
     {
         "id": 1,
-        "name": "Diego",
+        "user": "Martu",
         "pass": "1234",
-        "dni": "29747505",
+        "dni": "31224305",
         "medcoverage": "OsdePym",
-        "type": "admin"
+        "type": "user"
     },
     {
         "id": 2,
-        "name": "Julia",
+        "user": "Juli",
         "pass": "1234",
         "dni": "31224305",
-        "medcoverage": "ACE",
+        "medcoverage": "OsdePym",
         "type": "user"
     },
     {
         "id": 3,
-        "name": "Diego2",
+        "user": "Diego",
         "pass": "1234",
-        "dni": "29747505",
+        "dni": "31224305",
         "medcoverage": "OsdePym",
         "type": "admin"
     }

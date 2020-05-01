@@ -4,7 +4,7 @@
         "producto": "vacuna",
         "marca": "umbrella",
         "precio": "3000",
-        "stock": 1,
+        "stock": 78,
         "foto": {
             "moveOk": true,
             "name": "covid-1588033250.jpeg",

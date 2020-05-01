@@ -86,19 +86,20 @@ class Products {
         $sale->product_price = $product->precio;
         
         try {
-            $listSale = FileData::file2Obj('sales.json');
+            $listSale = BinData::bin2Obj('sales.bin');
             if($listSale == null){$listSale = [];}
         } catch (\Throwable $th) {
-            return 500;
+            echo $th;
+            return 501;
         }
         array_push($listSale,$sale);
         $res = new StdClass();
         $res->total = $sale->total;
         try {
-            FileData::obj2File($listSale,'sales.json');
+            BinData::Obj2Bin($listSale,'sales.bin');
             return $res;
         } catch (\Throwable $th) {
-            return 500;
+            return 502;
         }
     }
     public function getProducts(){
@@ -112,11 +113,11 @@ class Products {
     }
     public function getSales(){
         try {
-            $list = (array)FileData::file2Obj('sales.json');
+            $list = (array)BinData::bin2Obj('sales.bin');
             if($list == null){$list = [];}
             return $list;
         } catch (\Throwable $th) {
-            return 500;
+            return 503;
         }
     }
 

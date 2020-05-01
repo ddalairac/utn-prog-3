@@ -6,6 +6,7 @@ include_once "./class/response.class.php";
 include_once "./class/autenticate.class.php";
 include_once "./class/file-data.class.php";
 include_once "./class/file-img.class.php";
+include_once "./class/bin-data.class.php";
 include_once "./class/users.class.php";
 include_once "./class/product.class.php";
 

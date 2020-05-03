@@ -1,4 +1,6 @@
 <?php
+use Ajaxray\PHPWatermark\Watermark;
+
 class FileImg {
 
     private static $imgRute = './files/img/';
@@ -15,7 +17,9 @@ class FileImg {
         $this->name =  $nameParts[0] . '-' . time() . "." . $nameParts[Count($nameParts) - 1 ];
         $this->type = $_file['type'];
         $this->size = $_file['size'];
-        $this->moveOk = move_uploaded_file($tmp_name, self::$imgRute . $this->name);
+        $this->moveOk = move_uploaded_file($tmp_name, self::$imgRute.$this->name);
+        // add watermark
+        $this->name = $this->addWatermark($this->name);
     }
 
     public static function removeImg($img){
@@ -39,5 +43,26 @@ class FileImg {
         return $response;
     }
 
+    public static function addWatermark($fileName){
+        $wtrmrk_file = self::$imgRute.'watermark.png';
+        $from = self::$imgRute.$fileName;
+        $to = $from;
+
+        $watermark = imagecreatefrompng($wtrmrk_file);
+        imagealphablending($watermark, false);
+        imagesavealpha($watermark, true);
+        $img = imagecreatefromjpeg($from);
+        $img_w = imagesx($img);
+        $img_h = imagesy($img);
+        $wtrmrk_w = imagesx($watermark);
+        $wtrmrk_h = imagesy($watermark);
+        $dst_x = ($img_w / 2) - ($wtrmrk_w / 2); // Centrar W watermark en image
+        $dst_y = ($img_h / 2) - ($wtrmrk_h / 2); // Centrar H watermark en image
+        imagecopy($img, $watermark, $dst_x, $dst_y, 0, 0, $wtrmrk_w, $wtrmrk_h);
+        imagejpeg($img, $to, 100);
+        imagedestroy($img);
+        imagedestroy($watermark);
+            
+        return $to;
+    }
 }
-?>

@@ -11,8 +11,6 @@
 * (GET) ventas: Si es admin muestra listado con todas las ventas, si es usuario solo las ventas de dichousuario
 * Generar una marca de agua al subir la foto. */
 class Products {
-    
-
     private function getId($list){
         $max=0;
         foreach($list as $user){
@@ -122,4 +120,3 @@ class Products {
     }
 
 }
-?>

@@ -22,5 +22,13 @@
         "dni": "31224305",
         "medcoverage": "OsdePym",
         "type": "admin"
+    },
+    {
+        "id": 4,
+        "user": "Martino",
+        "pass": "1234",
+        "dni": "234234142",
+        "medcoverage": "ACE",
+        "type": "user"
     }
 ]

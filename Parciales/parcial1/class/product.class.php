@@ -92,6 +92,10 @@ class Products {
         $sale->tipo = $product->tipo;
         $sale->sabor = $product->sabor;
         $sale->precio = $product->precio;
+        $date = getdate();
+        $day = $date['year']."/".$date['mon']."/".$date['mday'];
+        $hour = $date['hours'].":".$date['minutes'].":".$date['seconds'];
+        $sale->fecha = $day." - ".$hour;
         
         try {
             $listSale = FileData::file2Obj('ventas.json');

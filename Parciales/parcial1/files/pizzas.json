@@ -14,7 +14,7 @@
     {
         "tipo": "molde",
         "precio": "150",
-        "stock": 19,
+        "stock": 18,
         "sabor": "napo",
         "foto": {
             "moveOk": true,
@@ -26,7 +26,7 @@
     {
         "tipo": "molde",
         "precio": "150",
-        "stock": "20",
+        "stock": 16,
         "sabor": "muzza",
         "foto": {
             "moveOk": true,
@@ -38,7 +38,7 @@
     {
         "tipo": "piedra",
         "precio": "150",
-        "stock": "20",
+        "stock": 19,
         "sabor": "muzza",
         "foto": {
             "moveOk": true,

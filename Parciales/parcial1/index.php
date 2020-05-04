@@ -33,7 +33,7 @@ if ($path != '') {
                         $auth = Autenticate::signin($_POST['email'], $_POST['clave'], $_POST['tipo']);
                         if (!is_int($auth)) {
                             echo Response::data2DTO("Success", 201, (object) array("token" => $auth));
-                        } else if ($auth == 409) {
+                        } else if ($auth == 400) {
                             echo Response::data2DTO("Error", 400, "Ya existe un usuario con el email " . $_POST['email']);
                         } else {
                             echo Response::data2DTO("Error", $auth, "No se pudo crear el usuario por un error interno.");

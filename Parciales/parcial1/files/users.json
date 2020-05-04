@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "user": "ddalairac@gmail.com",
+        "pass": "1234",
+        "type": "encargado"
+    },
+    {
+        "id": 2,
+        "user": "juli@gmail.com",
+        "pass": "1234",
+        "type": "cliente"
+    },
+    {
+        "id": 3,
+        "user": "Marco@gmail.com",
+        "pass": "1234",
+        "type": "cliente"
+    }
+]

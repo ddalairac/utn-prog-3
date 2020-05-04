@@ -1,0 +1,20 @@
+[
+    {
+        "email": "juli@gmail.com",
+        "tipo": "molde",
+        "sabor": "jam\u00f3n",
+        "precio": "150"
+    },
+    {
+        "email": "juli@gmail.com",
+        "tipo": "molde",
+        "sabor": "jam\u00f3n",
+        "precio": "150"
+    },
+    {
+        "email": "Marco@gmail.com",
+        "tipo": "molde",
+        "sabor": "napo",
+        "precio": "150"
+    }
+]

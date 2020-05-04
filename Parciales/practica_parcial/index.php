@@ -19,10 +19,13 @@ if ($path != '/usuario' && $path != '/login') {
     $jwtData = getallheaders()['token'] ?? '';
     try {
         $decoded = Autenticate::jwtDecode($jwtData);
+        print_r($decoded);
     } catch (\Throwable $th) {
-        exit(Response::data2DTO("Error", 401, "No autorizado."));
+        echo Response::data2DTO("Error", 401, "No autorizado.");
     }
-} else if ($path != '') {
+} 
+echo "asdasdasd";
+if ($path != '') {
     switch ($metodo) {
         case 'POST':
             switch ($path) {

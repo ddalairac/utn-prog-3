@@ -34,7 +34,7 @@ if ($path != '') {
                         if (!is_int($auth)) {
                             echo Response::data2DTO("Success", 201, (object) array("token" => $auth));
                         } else if ($auth == 409) {
-                            echo Response::data2DTO("Fail", 400, "Ya existe un usuario con el email " . $_POST['email']);
+                            echo Response::data2DTO("Error", 400, "Ya existe un usuario con el email " . $_POST['email']);
                         } else {
                             echo Response::data2DTO("Error", $auth, "No se pudo crear el usuario por un error interno.");
                         }
@@ -49,7 +49,7 @@ if ($path != '') {
                         if (!is_int($auth)) {
                             echo Response::data2DTO("Success", 200, (object) array("token" => $auth));
                         } else  if ($auth == 401) {
-                            echo Response::data2DTO("Fail", 401, "email o clave incorrecta.");
+                            echo Response::data2DTO("Error", 401, "email o clave incorrecta.");
                         } else {
                             echo Response::data2DTO("Error", $auth, "No se pudo crear el usuario por un error interno");
                         }
@@ -77,10 +77,10 @@ if ($path != '') {
                                         }
                                     }
                                 } else {
-                                    echo Response::data2DTO("Fail", 400, "El tipo sabor ser jamón, napo o muzza, " . $_POST['sabor'] . " no es valido");
+                                    echo Response::data2DTO("Error", 400, "El tipo sabor ser jamón, napo o muzza, " . $_POST['sabor'] . " no es valido");
                                 }
                             } else {
-                                echo Response::data2DTO("Fail", 400, "El tipo debe ser molde o piedra, " . $_POST['tipo'] . " no es valido");
+                                echo Response::data2DTO("Error", 400, "El tipo debe ser molde o piedra, " . $_POST['tipo'] . " no es valido");
                             }
                         } else {
                             echo Response::data2DTO("Error", 400, "Datos en solicitud incorrectos.");

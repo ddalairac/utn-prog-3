@@ -26,14 +26,40 @@ require __DIR__ . '/vendor/autoload.php';
 $app = AppFactory::create();
 $app->setBasePath("/utn/utn-prog-3/clases/6_slim");
 
+
+
 $app->get('/', function (Request $request, Response $response, $args) {
     $response->getBody()->write("Hello world!");
     return $response;
 });
 
-$app->get('/comer', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("a comerlaaaaa!");
-    return $response;
+// $app->post()
+// $app->delete()
+// $app->put()
+// /comer[/]: los [] lo hacen opcional
+// /comer/{id}: {} variable
+$app->get('/comer/{id}', function (Request $request, Response $response, $args) {
+    $method = $request->getMethod();
+    $params = $request->getQueryParams();
+    $params = (object) $params;
+    // $params =  json_encode($params);
+    $username = $args['username'] ?? '';
+
+    $arr = array(
+        "nombre"=>"Diego", 
+        "args"=>$args, // comer/{id}
+        "username"=>$args['username'] ?? '', // url ?username=ddalairac
+        "params"=>$params, 
+        "method"=>$method, 
+        "header"=>$request->getheaders()
+        // "header"=>$request->getheader("Host")
+    );
+    $response->getBody()->write(json_encode($arr));
+
+    return $response
+        ->withHeader('Content-Type','application/json')
+        ->withStatus(200);
 });
+
 
 $app->run();

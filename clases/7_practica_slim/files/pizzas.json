@@ -1,0 +1,50 @@
+[
+    {
+        "tipo": "molde",
+        "precio": "150",
+        "stock": 12,
+        "sabor": "jam\u00f3n",
+        "foto": {
+            "moveOk": true,
+            "name": ".\/files\/imagenes\/pizza_jamon_halloumi1p-1588632413.jpg",
+            "type": "image\/jpeg",
+            "size": 248726
+        }
+    },
+    {
+        "tipo": "molde",
+        "precio": "150",
+        "stock": 17,
+        "sabor": "napo",
+        "foto": {
+            "moveOk": true,
+            "name": ".\/files\/imagenes\/pizza_jamon_halloumi1p-1588633910.jpg",
+            "type": "image\/jpeg",
+            "size": 248726
+        }
+    },
+    {
+        "tipo": "molde",
+        "precio": "150",
+        "stock": 15,
+        "sabor": "muzza",
+        "foto": {
+            "moveOk": true,
+            "name": ".\/files\/imagenes\/pizza_jamon_halloumi1p-1588633928.jpg",
+            "type": "image\/jpeg",
+            "size": 248726
+        }
+    },
+    {
+        "tipo": "piedra",
+        "precio": "200",
+        "stock": "20",
+        "sabor": "napo",
+        "foto": {
+            "moveOk": true,
+            "name": ".\/files\/imagenes\/santander iso-1590875572.jpg",
+            "type": "image\/jpeg",
+            "size": 11882
+        }
+    }
+]

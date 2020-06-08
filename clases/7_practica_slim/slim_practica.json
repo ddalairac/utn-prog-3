@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "bc98a56a-7170-4a0b-9b29-02f9cc0a5839",
+		"name": "Practica Slim",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/usuario",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"http://localhost/utn/utn-prog-3/clases/7_practica_slim",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"http://localhost/utn/utn-prog-3/clases/7_practica_slim",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pizzas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "qqq",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipo",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sabor",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/pizzas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"http://localhost/utn/utn-prog-3/clases/7_practica_slim",
+						"pizzas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pizzas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "qq",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/pizzas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"http://localhost/utn/utn-prog-3/clases/7_practica_slim",
+						"pizzas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "qww",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipo",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sabor",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/ventas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"http://localhost/utn/utn-prog-3/clases/7_practica_slim",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "ww",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/ventas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"http://localhost/utn/utn-prog-3/clases/7_practica_slim",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

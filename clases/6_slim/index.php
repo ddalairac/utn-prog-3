@@ -40,7 +40,8 @@ $app->get('/', function (Request $request, Response $response, $args) {
 // /comer/{id}: {} variable
 $app->get('/comer/{id}', function (Request $request, Response $response, $args) {
     $method = $request->getMethod();
-    $params = $request->getQueryParams();
+    $params = $request->getQueryParams();// para GET
+    // $params = $request->getParsedBody();// para POST & PUT
     $params = (object) $params;
     // $params =  json_encode($params);
     $username = $args['username'] ?? '';

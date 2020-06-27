@@ -11,7 +11,7 @@ use Slim\Factory\AppFactory;
 use Slim\Exception\NotFoundException;
 
 $app = AppFactory::create();
-$app->setBasePath('/prog3');
+$app->setBasePath('/utn/utn-prog-3/material/ORM');
 $app->addErrorMiddleware(true, false, false);
 
 $app->get('/alumnos', function (Request $request, Response $response) {
@@ -35,30 +35,34 @@ $app->get('/alumnos', function (Request $request, Response $response) {
 
 $app->get('/', function (Request $request, Response $response) {
     // $users = Capsule::table('alumnos')->get();
-    $users = Capsule::table('alumnos')
-        ->where('legajo', '>', 1238)
-        ->select(['id', 'legajo', 'alumno'])
+    $users = Capsule::table('envios')
+        ->where('pNumero', '>', 2)
+        ->select(['Numero', 'pNumero', 'Cantidad'])
         ->get();
 
-    $response->getBody()->write(json_encode($users));
-    return $response;
+    $response
+        ->getBody()->write(json_encode($users));
+    return $response
+        ->withHeader('Content-Type', 'application/json')
+        ->withStatus(200);
 });
 
 $app->get('/join', function (Request $request, Response $response) {
-    // $users = Capsule::table('alumnos')->get();
-    $users = Capsule::table('alumnos')
-        ->join('localidades', 'localidades.id', '=', 'alumnos.localidad')
-        ->join('cuatrimestres', 'cuatrimestres.id', '=', 'alumnos.cuatrimestre')
+    $users = Capsule::table('envios')
+        ->join('productos', 'productos.pNumero', '=', 'envios.pNumero')
+        // ->join('provedores', 'provedores.Numero', '=', 'envios.Numero')
         ->get();
 
     $response->getBody()->write(json_encode($users));
-    return $response;
+    return $response
+        ->withHeader('Content-Type', 'application/json')
+        ->withStatus(200);
 });
 
 $app->get('/increment', function (Request $request, Response $response) {
     // $users = Capsule::table('alumnos')->get();
     $users = Capsule::table('alumnos')
-    ->decrement('localidad');
+        ->decrement('localidad');
 
     $response->getBody()->write(json_encode($users));
     return $response;
@@ -70,7 +74,7 @@ $app->get('/schema', function (Request $request, Response $response) {
         $table->string('email')->unique();
         $table->timestamps();
     });
-    
+
     $response->getBody()->write(json_encode($schema));
     return $response;
 });

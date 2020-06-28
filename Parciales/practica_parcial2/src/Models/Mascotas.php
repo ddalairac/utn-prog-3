@@ -1,9 +1,7 @@
 <?php
 namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 
-class Mascotas extends \Illuminate\Database\Eloquent\Model {
-    public $id;
-    public $nombre;
-    public $edad;
-    public $id_cliente;
+class P2Mascotas extends Model {
+    public $timestamps = false;
 }

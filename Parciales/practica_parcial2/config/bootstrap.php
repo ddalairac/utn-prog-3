@@ -1,44 +1,28 @@
-<?php
-require_once __DIR__ . '/../vendor/autoload.php';
+<?php 
+
+require __DIR__ . './../vendor/autoload.php';
+
 use Slim\Factory\AppFactory;
 use Config\Database;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Utils\Autenticate;
 
-// Instanciar Illuminate
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."./../");
+$dotenv->load();
+
 new Database();
+Autenticate::$key = $_SERVER['ENCRYPKEY'];
 
 $app = AppFactory::create();
 $app->setBasePath("/utn/utn-prog-3/Parciales/practica_parcial2/public");
-$app->addRoutingMiddleware();
 
-$customErrorHandler = function (
-    ServerRequestInterface $request,
-    Throwable $exception,
-    bool $displayErrorDetails,
-    bool $logErrors,
-    bool $logErrorDetails
-) use ($app) {
-    // $logger->error($exception->getMessage());
+// Error Handler
+require_once __DIR__."./errorHandler.php";
 
-    $payload = ['error' => $exception->getMessage()];
+// Rutas
+(require_once __DIR__."./routes.php")($app);
 
-    $response = $app->getResponseFactory()->createResponse();
-    $response->getBody()->write(
-        json_encode($payload, JSON_UNESCAPED_UNICODE)
-    );
+// Middlewares
+(require_once __DIR__."./Middlewares.php")($app);
 
-    return $response;
-};
-
-// Add Error Middleware
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-$errorMiddleware->setDefaultErrorHandler($customErrorHandler);
-
-
-// REGISTRAR RUTAS
-(require_once __DIR__ . '/routes.php')($app);
-
-// REGISTRAR MIDDLEWARE
-(require_once __DIR__ . '/middlewares.php')($app);
 
 return $app;

@@ -1,12 +1,14 @@
 <?php
 namespace App\Middleware;
-
-use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+// use Psr\Http\Message\ResponseInterface as Response;
+// use Psr\Http\Message\ServerRequestInterface as Request;
+// use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
-class AfterMiddleware
-{
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Slim\Psr7\Response;
+
+class AfterMiddleware {
     /**
      * Example middleware invokable class
      *
@@ -15,13 +17,29 @@ class AfterMiddleware
      *
      * @return Response
      */
-    public function __invoke(Request $request, RequestHandler $handler): Response
-    {
+    public function __invoke(Request $request, RequestHandler $handler): Response {
         $response = $handler->handle($request);
-        // $response->getBody()->write(' AFTER');
 
-        $response = $response->withHeader('Content-type', 'application/json');
-        
-        return $response;
+        $StatusCode = $response->getStatusCode();
+        $existingContent = (string) $response->getBody();
+        if ($StatusCode < 300) {
+            $existingContent = json_decode($existingContent) ?? $existingContent;
+            $resFormat = [
+                "status" => "Success",
+                "data" => $existingContent,
+            ];
+        } else {
+            $resFormat = [
+                "status" => "Error",
+                "message" => json_decode($existingContent)->error,
+            ];
+        }
+        $response = new Response();
+        $response->getBody()->write(json_encode($resFormat));
+
+        // $response->getBody()->write(' AFTER');
+        return $response
+            ->withHeader("Content-type", "application/json")
+            ->withStatus($StatusCode);
     }
 }

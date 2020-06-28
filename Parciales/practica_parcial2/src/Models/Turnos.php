@@ -1,10 +1,7 @@
 <?php
 namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 
-class Turnos extends \Illuminate\Database\Eloquent\Model {
-    public $id;
-    public $fecha;
-    public $hora;
-    public $id_mascota;
-    public $id_veterinario;
+class P2Turnos extends Model {
+    public $timestamps = false;
 }

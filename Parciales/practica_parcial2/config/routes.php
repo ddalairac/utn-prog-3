@@ -1,10 +1,11 @@
 <?php
 
+// use App\Controllers\AlumnosController;
+// use App\Middleware\BeforeMiddleware;
 use Slim\Routing\RouteCollectorProxy;
-use App\Controllers\AlumnosController;
-use App\Middleware\BeforeMiddleware;
-use App\Middleware\AlumnoValidateMiddleware;
 
+// use App\Middleware\AfterMiddleware;
+// use App\Middleware\AlumnoValidateMiddleware;
 
 return function ($app) {
     // $app->get('[/]', function (Request $request, Response $response) {
@@ -13,29 +14,28 @@ return function ($app) {
     // });
     $app->post('/registro', UsuariosController::class . ':register');
     $app->post('/login', UsuariosController::class . ':login');
-    
-    $app->group('/usuarios', function (RouteCollectorProxy $group) {
-        $group->get('[/]', AlumnosController::class . ':getAll');
-        $group->get('/:id', AlumnosController::class . ':getOne');
-        $group->post('[/]', AlumnosController::class . ':add')->add(AlumnoValidateMiddleware::class);
-        $group->put('/:id', AlumnosController::class . ':update')->add(AlumnoValidateMiddleware::class);
-        $group->delete('/:id', AlumnosController::class . ':delete');
-    })->add(new BeforeMiddleware());
 
-    $app->group('/mascotas', function (RouteCollectorProxy $group) {
-        $group->get('[/]', AlumnosController::class . ':getAll');
-        $group->get('/:id', AlumnosController::class . ':getAll');
-        $group->post('[/]', AlumnosController::class . ':getAll');
-        $group->put('/:id', AlumnosController::class . ':getAll');
-        $group->delete('/:id', AlumnosController::class . ':getAll');
-    });
+    // $app->group('/usuarios', function (RouteCollectorProxy $group) {
+    //     $group->get('[/]', UsuariosController::class . ':getAll');
+    //     $group->get('/:id', UsuariosController::class . ':getOne');
+    //     // $group->post('[/]', UsuariosController::class . ':add')->add(AlumnoValidateMiddleware::class);
+    //     // $group->put('/:id', UsuariosController::class . ':update')->add(AlumnoValidateMiddleware::class);
+    //     $group->delete('/:id', UsuariosController::class . ':delete');
+    // })->add(new BeforeMiddleware());
 
-    
-    $app->group('/turnos', function (RouteCollectorProxy $group) {
-        $group->get('[/]', AlumnosController::class . ':getAll');
-        $group->get('/:id', AlumnosController::class . ':getAll');
-        $group->post('[/]', AlumnosController::class . ':getAll');
-        $group->put('/:id', AlumnosController::class . ':getAll');
-        $group->delete('/:id', AlumnosController::class . ':getAll');
-    });
+    // $app->group('/mascotas', function (RouteCollectorProxy $group) {
+    //     $group->get('[/]', MascotasController::class . ':getAll');
+    //     $group->get('/:id', MascotasController::class . ':getOne');
+    //     $group->post('[/]', MascotasController::class . ':add');
+    //     $group->put('/:id', MascotasController::class . ':update');
+    //     $group->delete('/:id', MascotasController::class . ':delete');
+    // });
+
+    // $app->group('/turnos', function (RouteCollectorProxy $group) {
+    //     $group->get('[/]', MascotasController::class . ':getAll');
+    //     $group->get('/:id', MascotasController::class . ':getOne');
+    //     $group->post('[/]', MascotasController::class . ':add');
+    //     $group->put('/:id', MascotasController::class . ':update');
+    //     $group->delete('/:id', MascotasController::class . ':delete');
+    // });
 };

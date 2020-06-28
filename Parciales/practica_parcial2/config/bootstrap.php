@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 new Database();
 
 $app = AppFactory::create();
-$app->setBasePath("/apirest/public");
+$app->setBasePath("/utn/utn-prog-3/Parciales/practica_parcial2/public");
 $app->addRoutingMiddleware();
 
 $customErrorHandler = function (

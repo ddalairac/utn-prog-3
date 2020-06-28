@@ -32,6 +32,7 @@ class AfterMiddleware {
             $resFormat = [
                 "status" => "Error",
                 "message" => json_decode($existingContent)->error,
+                // "trace" => json_decode($existingContent)->trace,
             ];
         }
         $response = new Response();

@@ -10,7 +10,7 @@ class Autenticate {
     public static $key = "prog3-parcial2";
     public static $currentUser = [];
 
-    public static function getUser(Request $request){
+    public static function validateReq(Request $request){
         try {
             $jwt = $request->getheaders()["jwt"][0] ?? '';
             if(!$jwt){

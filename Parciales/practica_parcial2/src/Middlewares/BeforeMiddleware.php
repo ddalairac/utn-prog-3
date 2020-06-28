@@ -23,7 +23,7 @@ class BeforeMiddleware {
         $response = new Response();
 
         try {
-            $rta = Autenticate::getUser($request);
+            $user = Autenticate::validateReq($request);
             $response->getBody()->write($existingContent);
         } catch (\Throwable $th) {
                 throw new RespErrorException("No tiene permisos para realizar esta operacion.", 401);

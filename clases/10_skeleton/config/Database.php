@@ -12,11 +12,11 @@ class Database {
         $capsule = new Capsule;
 
         $capsule->addConnection([
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'utn',
-            'username' => 'root',
-            'password' => '',
+            'driver' => $_SERVER['DRIVER'],
+            'host' => $_SERVER['HOST'],
+            'database' => $_SERVER['DB'],
+            'username' => $_SERVER['USER'],
+            'password' => $_SERVER['PASSWORD'],
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

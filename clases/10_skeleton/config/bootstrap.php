@@ -5,6 +5,9 @@ require __DIR__ . './../vendor/autoload.php';
 use Slim\Factory\AppFactory;
 use Config\Database;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__."./../");
+$dotenv->load();
+
 new Database();
 
 $app = AppFactory::create();

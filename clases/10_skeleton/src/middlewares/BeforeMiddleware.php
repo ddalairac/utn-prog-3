@@ -19,7 +19,7 @@ class BeforeMiddleware {
         $existingContent = (string) $response->getBody();
 
         $response = new Response();
-        $valid = false;
+        $valid = true;
         if($valid){
             // $response->getBody()->write('BEFORE' . $existingContent);
             $response->getBody()->write($existingContent);

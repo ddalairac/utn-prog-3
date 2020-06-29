@@ -10,17 +10,17 @@ use App\Middleware\BeforeMiddleware;
 use App\Middleware\UppercaseTurnosMiddleware;
 
 return function ($app) {
-    $app->get('/',function (Request $request, Response $response) {
-        $response->getBody()->write("Hello world!");
-        return $response;
-    });
+    // $app->get('/',function (Request $request, Response $response) {
+    //     $response->getBody()->write("Hello world!");
+    //     return $response;
+    // });
     
     $app->post('/registro', UsuariosController::class . ':register');
     $app->post('/login', UsuariosController::class . ':login');
     
     $app->group('/mascota', function (RouteCollectorProxy $group) {
         // $group->get('[/]', MascotasController::class . ":getAll");
-        $group->get('/{id}', MascotasController::class . ":getOne");
+        $group->get('/{id_mascota}', MascotasController::class . ":getOne");
         $group->post('[/]', MascotasController::class . ":add");
         // $group->put('[/]', MascotasController::class . ":update");
         // $group->delete('[/]', MascotasController::class . ":delete");

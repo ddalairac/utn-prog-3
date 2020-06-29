@@ -11,13 +11,18 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class MascotasController/* implements iCRUD */ {
 
-    public function getOne(Request $request, Response $response) {
-        $params = $request->getParsedBody() ?? [];
-        if (!isset($params["id"])) {
-            throw new RespErrorException("Solicitud incorrecta, debe indicar el id de la mascota", 400);
+    public function getOne(Request $request, Response $response,$param) {
+        
+        if(!is_numeric($param['id_mascota'])){
+            throw new RespErrorException("El id de la mascota debe ser numerico", 400);
         }
-        $mascota = P2Mascotas::where('id', $params["id"])->first();
-        $turnos = P2Turnos::where('id_mascota', $params["id"])
+        // $params = $request->getParsedBody() ?? [];
+
+        $mascota = P2Mascotas::where('id', $param['id_mascota'])->first();
+        if(!$mascota){
+            throw new RespErrorException("El id ingresado no corresponde a ninguna mascota", 400);
+        }
+        $turnos = P2Turnos::where('id_mascota', $param['id_mascota'])
             ->join('p2_usuarios', 'p2_usuarios.id', '=', 'p2_turnos.id_veterinario')
             ->orderBy('fecha', 'asc')
             ->orderBy('hora', 'asc')

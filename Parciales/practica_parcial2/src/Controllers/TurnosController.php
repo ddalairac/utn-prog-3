@@ -90,7 +90,7 @@ class TurnosController/* implements iCRUD  */ {
             ->where('id_veterinario', $id_user)
             ->where('fecha', $today->format('Y-m-d'))
             ->join('p2_mascotas', 'p2_turnos.id_mascota', '=', 'p2_mascotas.id')
-            ->get();
+            ->get(); 
 
         return $turnos;
     }

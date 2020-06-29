@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "c5c3beff-aee8-4241-b867-e0d753716fba",
+		"name": "illuminate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/9_illuminate/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"9_illuminate",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "join",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/9_illuminate/join",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"9_illuminate",
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "where",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/9_illuminate/join",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"9_illuminate",
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "first",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/9_illuminate/join",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"9_illuminate",
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "distinct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/9_illuminate/join",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"9_illuminate",
+						"join"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

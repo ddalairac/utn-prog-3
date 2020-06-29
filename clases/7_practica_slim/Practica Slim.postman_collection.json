@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "9ae398d2-4cee-4859-af11-c66368473dfe",
+		"name": "Practica Slim",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "Diego",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "encargado",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"7_practica_slim",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "Anibal",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"7_practica_slim",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pizzas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA4NzU1MTQsImV4cCI6MTU5MDg3NzMxNCwic3ViIjoiRGllZ28iLCJ0eXAiOiJlbmNhcmdhZG8ifQ.pkTHp0GIu27UYzxOGJQhEPmwUveWoKxlwSP0QTVRwzU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipo",
+							"value": "piedra",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "200",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "sabor",
+							"value": "napo",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": "/C:/Users/a308640/Pictures/santander iso.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/pizzas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"7_practica_slim",
+						"pizzas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pizzas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA4NzM1MzksImV4cCI6MTU5MDg3NTMzOSwic3ViIjoiSnVsaWEiLCJ0eXAiOiJlbmNhcmdhZG8ifQ.Db3LBQJNlCL4iu2al-cANFtJqMDph17L00YU9A2Co5w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/pizzas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"7_practica_slim",
+						"pizzas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA4NzU2MTMsImV4cCI6MTU5MDg3NzQxMywic3ViIjoiQW5pYmFsIiwidHlwIjoiY2xpZW50ZSJ9.Z8rdV4_LhRaj4xJ37ymUKjctiBnBHqLna4AAeOeg5iA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipo",
+							"value": "molde",
+							"type": "text"
+						},
+						{
+							"key": "sabor",
+							"value": "muzza",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"7_practica_slim",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA4NzU1MTQsImV4cCI6MTU5MDg3NzMxNCwic3ViIjoiRGllZ28iLCJ0eXAiOiJlbmNhcmdhZG8ifQ.pkTHp0GIu27UYzxOGJQhEPmwUveWoKxlwSP0QTVRwzU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/clases/7_practica_slim/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"clases",
+						"7_practica_slim",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

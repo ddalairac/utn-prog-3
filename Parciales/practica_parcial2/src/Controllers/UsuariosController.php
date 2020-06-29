@@ -50,7 +50,7 @@ class UsuariosController/* implements iCRUD */ {
             }
             $payload = [
                 "email" => $user["email"], 
-                "type" =>$user["type"]
+                "type" =>$user["type"],
             ];
             $jwt = Autenticate::jwtEncode($payload);
             $rta = json_encode(["jwt" => $jwt]);
@@ -64,24 +64,24 @@ class UsuariosController/* implements iCRUD */ {
         return $response;
     }
 
-    public function getAll(Request $request, Response $response) {
-        $response->getBody()->write("getAll usuarios");
-        return $response;
-    }
-    public function getOne(Request $request, Response $response) {
-        $response->getBody()->write("getOne usuario");
-        return $response;
-    }
-    public function add(Request $request, Response $response) {
-        $response->getBody()->write("add usuario");
-        return $response;
-    }
-    public function update(Request $request, Response $response) {
-        $response->getBody()->write("update usuario");
-        return $response;
-    }
-    public function delete(Request $request, Response $response) {
-        $response->getBody()->write("delete usuario");
-        return $response;
-    }
+    // public function getAll(Request $request, Response $response) {
+    //     $response->getBody()->write("getAll usuarios");
+    //     return $response;
+    // }
+    // public function getOne(Request $request, Response $response) {
+    //     $response->getBody()->write("getOne usuario");
+    //     return $response;
+    // }
+    // public function add(Request $request, Response $response) {
+    //     $response->getBody()->write("add usuario");
+    //     return $response;
+    // }
+    // public function update(Request $request, Response $response) {
+    //     $response->getBody()->write("update usuario");
+    //     return $response;
+    // }
+    // public function delete(Request $request, Response $response) {
+    //     $response->getBody()->write("delete usuario");
+    //     return $response;
+    // }
 }

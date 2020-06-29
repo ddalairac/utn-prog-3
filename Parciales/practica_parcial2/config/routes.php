@@ -26,8 +26,8 @@ return function ($app) {
     })->add(new BeforeMiddleware());
 
     $app->group('/turnos', function (RouteCollectorProxy $group) {
-        // $group->get('[/]', TurnosController::class . ":getAll");
-        $group->get('/{id}', TurnosController::class . ":getOne");
+        $group->get('[/]', TurnosController::class . ":getAll");
+        // $group->get('/{id}', TurnosController::class . ":getOne");
         $group->post('[/mascota]', TurnosController::class . ":add");
         // $group->put('[/]', TurnosController::class . ":update");
         // $group->delete('[/]', TurnosController::class . ":delete");

@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "e35db1eb-25f2-4a6d-8906-bee8eaa73cd4",
+		"name": "parcial2_practica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "otro@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "cliente@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mascota",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im90cm9AZ21haWwuY29tIiwidHlwZSI6MX0.pH13Bx853FDoxr-NnKrqvJn2Vnm7UqvRtEt9Hh-JnTE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Filipo",
+							"type": "text"
+						},
+						{
+							"key": "edad",
+							"value": "9",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/mascota",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"mascota"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mascota/id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "jwt",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im90cm9AZ21haWwuY29tIiwidHlwZSI6MX0.pH13Bx853FDoxr-NnKrqvJn2Vnm7UqvRtEt9Hh-JnTE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/mascota/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"mascota",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "turnos/mascota",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im90cm9AZ21haWwuY29tIiwidHlwZSI6MX0.pH13Bx853FDoxr-NnKrqvJn2Vnm7UqvRtEt9Hh-JnTE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_mascota",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": "2020-6-30",
+							"type": "text"
+						},
+						{
+							"key": "hora",
+							"value": "13:30:00",
+							"type": "text"
+						},
+						{
+							"key": "id_veterinario",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/turnos/mascota",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"turnos",
+						"mascota"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "turnos/id (vet)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "jwt",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGVAZ21haWwuY29tIiwidHlwZSI6MX0.QLQHTRKgsiERVZK6uJEhAjWYCq6ZxBPTV23fw8JEjAs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/turnos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"turnos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "turnos/id (cliente)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/utn/utn-prog-3/Parciales/practica_parcial2/public/turnos/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"utn",
+						"utn-prog-3",
+						"Parciales",
+						"practica_parcial2",
+						"public",
+						"turnos",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

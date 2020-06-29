@@ -23,8 +23,14 @@ class UsuariosController/* implements iCRUD */ {
         // $user->pass = $params["pass"];
 
         try {
-            $rta = json_encode(["jwt" => Autenticate::jwtCreate($user->email, $user->type)]);
             $user->save();
+            $payload = [
+                "email" => $user["email"], 
+                "type" =>$user["type"],
+            ];
+            $jwt = Autenticate::jwtEncode($payload);
+
+            $rta = json_encode(["jwt" => $jwt]);
         } catch (\PDOException $e) {
             throw new RespErrorException("Solicitud incorrecta", 400, $e);
         }

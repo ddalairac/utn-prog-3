@@ -18,7 +18,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "cliente@gmail.com",
+									"value": "veterinario2@gmail.com",
 									"type": "text"
 								},
 								{
@@ -28,19 +28,13 @@
 								},
 								{
 									"key": "tipo",
-									"value": "3",
+									"value": "2",
 									"type": "text"
 								},
 								{
 									"key": "usuario",
-									"value": "usuario cliente",
+									"value": "usuario vet",
 									"type": "text"
-								},
-								{
-									"key": "",
-									"type": "file",
-									"src": [],
-									"disabled": true
 								}
 							]
 						},
@@ -72,7 +66,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "cliente@gmail.com",
+									"value": "veterinario@gmail.com",
 									"type": "text"
 								},
 								{
@@ -215,7 +209,7 @@
 							"urlencoded": [
 								{
 									"key": "veterinario_id",
-									"value": "5",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -225,7 +219,7 @@
 								},
 								{
 									"key": "fecha",
-									"value": "2020-06-29 15:00",
+									"value": "2020-07-29 15:00",
 									"type": "text"
 								}
 							]
@@ -291,7 +285,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost/utn/utn-prog-3/Parciales/parcial2/public/turnos/1",
+							"raw": "http://localhost/utn/utn-prog-3/Parciales/parcial2/public/turnos/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -303,7 +297,7 @@
 								"parcial2",
 								"public",
 								"turnos",
-								"1"
+								"3"
 							]
 						}
 					},

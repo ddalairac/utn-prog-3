@@ -65,6 +65,7 @@ class TurnosController/* implements iCRUD  */ {
 
         $rta = json_encode(["ok" => $turno->save()]);
 
+        $response->getBody()->write($rta);
         return $response;
     }
     public function getAll(Request $request, Response $response) {

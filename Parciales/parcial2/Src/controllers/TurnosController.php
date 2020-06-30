@@ -124,12 +124,6 @@ class TurnosController/* implements iCRUD  */ {
             ->join('usuarios', 'mascotas.veterinario_id', '=', 'usuarios.id')
             ->get();
 
-        // $mascotas = Mascotas::select('nombre', 'turnos.fecha')
-        //     ->where('id_cliente', $id_user)
-        //     ->join('usuarios', 'mascotas.id_cliente', '=', 'usuarios.id')
-        //     ->join('turnos', 'turnos.id_mascota', '=', 'mascotas.id')
-        //     ->get();
-
         // return $mascotas;
         return "clientes";
     }

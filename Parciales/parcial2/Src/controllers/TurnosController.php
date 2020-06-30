@@ -33,9 +33,9 @@ class TurnosController/* implements iCRUD  */ {
         //     "clientDate" => $clientDate->getTimestamp(),
         // ]);
 
-        // if ($today->getTimestamp() > $clientDate->getTimestamp()) {
-        //     throw new RespErrorException("No es posible asignar turnos en fechas pasadas", 400);
-        // }
+        if ($today->getTimestamp() > $clientDate->getTimestamp()) {
+            throw new RespErrorException("No es posible asignar turnos en fechas pasadas", 400);
+        }
         if ($openHour->getTimestamp() > $clientHour->getTimestamp() || $clientHour->getTimestamp() > $closeHour->getTimestamp()) {
             throw new RespErrorException("Los turnos son de 9 a 17 hs", 400);
         }

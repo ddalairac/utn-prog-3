@@ -24,6 +24,7 @@ class BeforeMiddleware {
 
         try {
             $user = Autenticate::validateReq($request);
+            // var_dump($user);
             $response->getBody()->write($existingContent);
         } catch (\Throwable $th) {
                 throw new RespErrorException("No tiene permisos para realizar esta operacion.", 401);

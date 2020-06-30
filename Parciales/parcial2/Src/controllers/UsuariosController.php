@@ -2,31 +2,32 @@
 
 namespace App\Controllers;
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Models\P2Usuarios;
+use App\Models\Usuarios;
 use App\Utils\Autenticate;
 use App\Utils\RespErrorException;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class UsuariosController/* implements iCRUD */ {
     /** Crea un nuevo usuario. Retorna un JWT o lanza una excepcion */
     public function register(Request $request, Response $response) {
         $params = $request->getParsedBody() ?? [];
-        if (!isset($params["email"]) || !isset($params["type"]) || !isset($params["pass"])) {
+        if (!isset($params["usuario"]) || !isset($params["email"]) || !isset($params["tipo"]) || !isset($params["clave"])) {
             throw new RespErrorException("Solicitud incorrecta", 400);
         }
 
-        $user = new P2Usuarios();
+        $user = new Usuarios();
+        $user->usuario = $params["usuario"];
         $user->email = $params["email"];
-        $user->type = $params["type"];
-        $user->pass = Autenticate::jwtEncode($params["pass"]);
+        $user->tipo = $params["tipo"];
+        $user->clave = Autenticate::jwtEncode($params["clave"]);
         // $user->pass = $params["pass"];
 
         try {
             $user->save();
             $payload = [
-                "email" => $user["email"], 
-                "type" =>$user["type"],
+                "email" => $user["email"],
+                "tipo" => $user["tipo"],
             ];
             $jwt = Autenticate::jwtEncode($payload);
 
@@ -41,22 +42,22 @@ class UsuariosController/* implements iCRUD */ {
     }
 
     public function login(Request $request, Response $response) {
-        $params = $request->getParsedBody()??[];
-        if (!isset($params["email"]) || !isset($params["pass"])) {
+        $params = $request->getParsedBody() ?? [];
+        if (!isset($params["email"]) || !isset($params["clave"])) {
             throw new RespErrorException("Solicitud incorrecta", 400);
         }
 
         try {
-            $encriptPass = Autenticate::jwtEncode($params["pass"]);
-            $user = P2Usuarios::where('email', $params["email"])
-                ->where('pass', $encriptPass)
+            $encriptclave = Autenticate::jwtEncode($params["clave"]);
+            $user = Usuarios::where('email', $params["email"])
+                ->where('clave', $encriptclave)
                 ->first();
-            if(!$user){
+            if (!$user) {
                 throw new RespErrorException("No autorizado.", 401);
             }
             $payload = [
-                "email" => $user["email"], 
-                "type" =>$user["type"],
+                "email" => $user["email"],
+                "tipo" => $user["tipo"],
             ];
             $jwt = Autenticate::jwtEncode($payload);
             $rta = json_encode(["jwt" => $jwt]);
@@ -69,25 +70,4 @@ class UsuariosController/* implements iCRUD */ {
         // $response->getBody()->write("login");
         return $response;
     }
-
-    // public function getAll(Request $request, Response $response) {
-    //     $response->getBody()->write("getAll usuarios");
-    //     return $response;
-    // }
-    // public function getOne(Request $request, Response $response) {
-    //     $response->getBody()->write("getOne usuario");
-    //     return $response;
-    // }
-    // public function add(Request $request, Response $response) {
-    //     $response->getBody()->write("add usuario");
-    //     return $response;
-    // }
-    // public function update(Request $request, Response $response) {
-    //     $response->getBody()->write("update usuario");
-    //     return $response;
-    // }
-    // public function delete(Request $request, Response $response) {
-    //     $response->getBody()->write("delete usuario");
-    //     return $response;
-    // }
 }

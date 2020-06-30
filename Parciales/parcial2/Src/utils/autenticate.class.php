@@ -12,7 +12,8 @@ class Autenticate {
 
     public static function validateReq(Request $request){
         try {
-            $jwt = $request->getheaders()["jwt"][0] ?? '';
+            $jwt = $request->getheaders()["token"][0] ?? '';
+            // echo $jwt;
             if(!$jwt){
                 throw new RespErrorException("No tiene permisos para realizar esta operacion.", 401);
             }
@@ -20,7 +21,7 @@ class Autenticate {
             $user = Autenticate::jwtDecode($jwt);
             // echo "\nuser: \n"; print_r($user);
                 // var_dump($user);
-            if (isset($user->email) && isset($user->type)) {
+            if (isset($user->email) && isset($user->tipo)) {
                 // echo"\n existe email y type\n";
                 return $user;
             } else {
@@ -39,7 +40,7 @@ class Autenticate {
     //         if($list == null){$list = [];}
     //         foreach ($list as $us) {
     //             if($user == $us->user && $pass == $us->pass){
-    //                 return self::jwtCreate($user,$us->type);
+    //                 return self::jwtCreate($user,$us->tipo);
     //             }
     //         }
     //         return 401;
@@ -67,7 +68,7 @@ class Autenticate {
     //     $newUser->id = self::setId($list);
     //     $newUser->user = $user;
     //     $newUser->pass = $pass;
-    //     $newUser->type = $type;
+    //     $newUser->tipo = $type;
     //     array_push($list,$newUser);
     //     try {
     //         FileData::obj2File($list,self::$userFile);

@@ -22,10 +22,14 @@ class TipoMascotaControler/* implements iCRUD */ {
         if ($userType != 1) /* 1 admin*/ {
             throw new RespErrorException("Solo los admin pueden ingresar un tipo de mascota", 401);
         }
+        try {
+            $mascota = new TipoMascota();
+            $mascota->tipo = $params["tipo"];
+            $rta = json_encode(["ok" => $mascota->save()]);
+        } catch (\PDOException $ex) {
+            throw new RespErrorException("El tipo de mascota '".$params["tipo"]."' ya existe", 400,$ex);
+        }
 
-        $mascota = new TipoMascota();
-        $mascota->tipo = $params["tipo"];
-        $rta = json_encode(["ok" => $mascota->save()]);
 
         $response->getBody()->write($rta);
         return $response;

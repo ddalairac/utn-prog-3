@@ -21,3 +21,19 @@ class RespErrorException extends Exception
         echo "Una función personalizada para este tipo de excepción\n";
     }
 }
+
+
+/* 
+    200, "ok"
+    201, "Creado"
+    202, "Aceptado"
+
+    400, "Datos en incorrectos."
+    401, "No tiene permisos para realizar esta operacion."
+    403, "Prohibido" // como 401 pero loguearse de nuevo no hace diferencia.
+    404, "No se encontro"
+    405, "Método no permitido."
+    409, "Conflicto con recurso" // se quiere modificar un archivo que ya no existe
+
+    500, "Error interno."
+*/

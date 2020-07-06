@@ -18,7 +18,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "veterinario2@gmail.com",
+									"value": "cliente2@gmail.com",
 									"type": "text"
 								},
 								{
@@ -66,7 +66,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "veterinario@gmail.com",
+									"value": "cliente2@gmail.com",
 									"type": "text"
 								},
 								{
@@ -101,7 +101,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInRpcG8iOjF9.CRC_inDm2jPVvZogsoT8kOMt_yPeLfghjGiIVv11-ng",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGUyQGdtYWlsLmNvbSIsInRpcG8iOjJ9.rL9geWhg7xdVDf9KR9-puRFuurAEJoQBXKvr6tIOQQY",
 								"type": "text"
 							}
 						],
@@ -110,7 +110,7 @@
 							"formdata": [
 								{
 									"key": "tipo",
-									"value": "perro",
+									"value": "pato",
 									"type": "text"
 								},
 								{
@@ -146,7 +146,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGVAZ21haWwuY29tIiwidGlwbyI6M30.LmUeNuXAyHOUB92nUrFDNPy4CRMqCa7Oi2LxwmLrd2o",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGUyQGdtYWlsLmNvbSIsInRpcG8iOjN9.4_ebdzb9SDQb1XbhJUr2BlD9wUvpz7fHtKEhtleV998",
 								"type": "text"
 							}
 						],
@@ -155,22 +155,23 @@
 							"formdata": [
 								{
 									"key": "nombre",
-									"value": "Filipo",
+									"value": "Maia",
 									"type": "text"
 								},
 								{
 									"key": "fecha_nacimiento",
-									"value": "2002-03-01",
+									"value": "20013-03-01",
 									"type": "text"
 								},
 								{
 									"key": "cliente_id",
-									"value": "3",
-									"type": "text"
+									"value": "16",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "tipo_mascota_id",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -200,7 +201,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGVAZ21haWwuY29tIiwidGlwbyI6M30.LmUeNuXAyHOUB92nUrFDNPy4CRMqCa7Oi2LxwmLrd2o",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGUyQGdtYWlsLmNvbSIsInRpcG8iOjN9.4_ebdzb9SDQb1XbhJUr2BlD9wUvpz7fHtKEhtleV998",
 								"type": "text"
 							}
 						],
@@ -209,17 +210,17 @@
 							"urlencoded": [
 								{
 									"key": "veterinario_id",
-									"value": "2",
+									"value": "5",
 									"type": "text"
 								},
 								{
 									"key": "mascota_id",
-									"value": "1",
+									"value": "8",
 									"type": "text"
 								},
 								{
 									"key": "fecha",
-									"value": "2020-07-29 15:00",
+									"value": "2020-07-12 11:30",
 									"type": "text"
 								}
 							]
@@ -280,12 +281,12 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InZldGVyaW5hcmlvQGdtYWlsLmNvbSIsInRpcG8iOjJ9.A2PQO40S1aJh5vL05-FPvnl0i94wVdCEfk5JbB2tybI",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGUyQGdtYWlsLmNvbSIsInRpcG8iOjJ9.rL9geWhg7xdVDf9KR9-puRFuurAEJoQBXKvr6tIOQQY",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost/utn/utn-prog-3/Parciales/parcial2/public/turnos/3",
+							"raw": "http://localhost/utn/utn-prog-3/Parciales/parcial2/public/turnos/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -297,7 +298,7 @@
 								"parcial2",
 								"public",
 								"turnos",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -310,12 +311,12 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGVAZ21haWwuY29tIiwidHlwZSI6bnVsbH0.kG94bsR8SRVDaGdbJ0P2FVboO60rwXnIwHvmRvSQJOg",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImNsaWVudGUyQGdtYWlsLmNvbSIsInRpcG8iOjJ9.rL9geWhg7xdVDf9KR9-puRFuurAEJoQBXKvr6tIOQQY",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost/utn/utn-prog-3/Parciales/parcial2/public/turnos/mascota/2",
+							"raw": "http://localhost/utn/utn-prog-3/Parciales/parcial2/public/turnos/mascota/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -328,7 +329,7 @@
 								"public",
 								"turnos",
 								"mascota",
-								"2"
+								"1"
 							]
 						}
 					},

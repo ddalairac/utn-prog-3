@@ -23,13 +23,19 @@ class UppercaseTurnosMiddleware {
         $res = json_decode($existingContent) ?? $existingContent;
 
         // Uppercase fechas futuras
-        $today = new DateTime();
-        foreach ($res as $turno) {
-            $turnoFecha = new DateTime($turno->fecha);
-            if($today->getTimestamp() < $turnoFecha->getTimestamp()){
-                $turno->nombre = strtoupper($turno->nombre);
+        if (isset($res) && isset($res->turnos)) {
+            $today = new DateTime();
+            foreach ($res->turnos as $turno) {
+                $turnoFecha = new DateTime($turno->fecha);
+                if ($today->getTimestamp() < $turnoFecha->getTimestamp()) {
+                    $turno->nombre = strtoupper($turno->nombre);
+                    $turno->nombre = strtoupper($turno->nombre);
+                    if(isset($turno->veterinario)){
+                        $turno->veterinario = strtoupper($turno->veterinario);
+                    }
+                }
             }
-        }
+        } 
 
         $response = new Response();
         $response->getBody()->write(json_encode($res));

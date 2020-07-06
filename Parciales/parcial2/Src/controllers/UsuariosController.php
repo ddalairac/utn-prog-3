@@ -23,6 +23,13 @@ class UsuariosController/* implements iCRUD */ {
         $user->clave = Autenticate::jwtEncode($params["clave"]);
         // $user->pass = $params["pass"];
 
+        if(!is_numeric($user["tipo"])){
+            throw new RespErrorException("Tipo de usuario debe ser un numero", 400);
+        }
+        if($user["tipo"]< 1 || 3 < $user["tipo"]){
+            throw new RespErrorException("Tipo de usuario debe ser 1 (admin), 2(vet) o 3(cliente)", 400);
+        }
+
         try {
             $user->save();
             $payload = [
@@ -33,7 +40,8 @@ class UsuariosController/* implements iCRUD */ {
 
             $rta = json_encode(["jwt" => $jwt]);
         } catch (\PDOException $e) {
-            throw new RespErrorException("Solicitud incorrecta", 400, $e);
+            // throw new RespErrorException("Solicitud incorrecta", 400, $e);
+            throw new RespErrorException($e->getMessage(), 400, $e);
         }
 
         $response->getBody()->write($rta);
